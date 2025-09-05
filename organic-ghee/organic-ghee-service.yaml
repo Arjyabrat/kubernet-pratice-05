@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: organic-ghee-service
+  namespace: organic-ghee
+spec:
+  type: NodePort   # simple for single-node cluster
+  selector:
+    app: organic-ghee
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 5656
+      nodePort: 30081

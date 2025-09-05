@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organic-ghee-deployment
+  namespace: organic-ghee
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: organic-ghee
+  template:
+    metadata:
+      labels:
+        app: organic-ghee
+    spec:
+      containers:
+        - name: organic-ghee
+          image: arjyabrat/organic-ghee:latest   # later we’ll push to Docker Hub
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5656
